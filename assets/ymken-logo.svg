@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="104" viewBox="0 0 300 104" role="img" aria-label="YMKEN Solutions">
+  <rect width="300" height="104" fill="white"/>
+  <path d="M20 6h16l32 58 32-58h16L75 77v21H59V77L20 6Z" fill="#08a5df"/>
+  <path d="M37 6h13l26 47-8 14L37 6Z" fill="#075aa8" opacity=".9"/>
+  <text x="122" y="63" font-family="Inter,Arial,sans-serif" font-size="54" font-weight="800" letter-spacing="-5" fill="#333">mken</text>
+  <text x="156" y="91" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="500" letter-spacing="1" fill="#333">solutions</text>
+</svg>
