@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "build": "test -f api/contact.ts"
+  }
+}
