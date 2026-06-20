@@ -240,10 +240,10 @@
               Décrivez votre besoin : création de site, application, IA, acquisition, identité ou accessibilité. Nous revenons vers vous avec une première lecture stratégique.
             </p>
           </div>
-          <form class="contact-form" action="mailto:contact@ymken.com" method="post" enctype="text/plain">
+          <form class="contact-form" data-contact-form>
             <label>
               Nom complet
-              <input type="text" name="nom" autocomplete="name" required />
+              <input type="text" name="name" autocomplete="name" required />
             </label>
             <label>
               Email professionnel
@@ -264,6 +264,7 @@
               Message
               <textarea name="message" rows="5" placeholder="Parlez-nous de votre projet" required></textarea>
             </label>
+            <p data-contact-status role="status" aria-live="polite" hidden></p>
             <button class="btn btn-primary" type="submit">Envoyer la demande</button>
           </form>
         </div>
