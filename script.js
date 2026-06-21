@@ -38,14 +38,16 @@ contactForm?.addEventListener('submit', async (event) => {
       }),
     });
 
+    const result = await response.json().catch(() => null);
+
     if (!response.ok) {
-      throw new Error('Contact request failed');
+      throw new Error(result?.error || 'Contact request failed');
     }
 
     contactForm.reset();
     setContactStatus('Merci, votre demande a bien été envoyée. Nous reviendrons vers vous rapidement.');
   } catch (error) {
-    setContactStatus('Une erreur est survenue. Veuillez réessayer.');
+    setContactStatus(error instanceof Error ? error.message : 'Une erreur est survenue. Veuillez réessayer.');
   } finally {
     submitButton?.removeAttribute('disabled');
   }
