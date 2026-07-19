@@ -1,0 +1,40 @@
+import type { Metadata } from 'next';
+import { Clock3, Facebook, Linkedin, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { ContactForm } from '@/components/contact-form';
+import { Eyebrow } from '@/components/ui';
+import { WhatsAppLink } from '@/components/whatsapp-link';
+import { company } from '@/lib/config';
+
+export const metadata: Metadata = {
+  title: 'Contact & devis',
+  description: 'Parlez-nous de votre projet digital. YMKEN Solutions vous répond depuis Casablanca, Maroc.',
+};
+
+export default function Contact() {
+  return (
+    <section className="contactpage">
+      <div className="shell contactgrid">
+        <aside>
+          <Eyebrow>Commençons une conversation</Eyebrow>
+          <h1>Un projet en tête ?<br /><em>Parlons-en.</em></h1>
+          <p>Quelques lignes suffisent pour commencer. Nous reviendrons vers vous avec les bonnes questions et une première orientation.</p>
+          <div className="contactpoints">
+            <a href={`mailto:${company.email}`}><Mail /><span><small>Email</small>{company.email}</span></a>
+            <span><MapPin /><span><small>Localisation</small>{company.location}</span></span>
+            <span><Clock3 /><span><small>Disponibilité</small>Lun – Ven · 09h – 18h</span></span>
+            <WhatsAppLink><MessageCircle /><span><small>WhatsApp</small>Démarrer la conversation</span></WhatsAppLink>
+          </div>
+          <div className="contactsocials" aria-label="Réseaux sociaux">
+            <a href={company.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook YMKEN Solutions"><Facebook /></a>
+            <a href={company.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn YMKEN Solutions"><Linkedin /></a>
+          </div>
+        </aside>
+        <div className="formbox">
+          <p>Parlez-nous de vous</p>
+          <h2>Construisons quelque chose<br />d’utile ensemble.</h2>
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  );
+}
