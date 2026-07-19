@@ -39,6 +39,14 @@ Variables nécessaires :
 - `CONTACT_TO_EMAIL` : destinataire des demandes
 - `NEXT_PUBLIC_WHATSAPP_NUMBER` : numéro WhatsApp international sans `+`
 
+Le numéro local communiqué (`066357039`) ne contient que neuf chiffres. Il est conservé dans la configuration de l’entreprise, mais n’est jamais transformé automatiquement en URL WhatsApp afin de ne pas inventer un chiffre. Renseignez `NEXT_PUBLIC_WHATSAPP_NUMBER` uniquement avec le numéro international complet confirmé ; tous les CTA WhatsApp l’utiliseront alors automatiquement.
+
+### Configuration Vercel
+
+Dans **Project Settings → Environment Variables**, ajoutez les quatre variables pour l’environnement **Preview**, puis pour **Production** après validation du déploiement de prévisualisation. Utilisez une adresse expéditrice préalablement authentifiée dans Brevo. Redéployez le projet après toute modification des variables.
+
+La clé `BREVO_API_KEY` est lue exclusivement par la route serveur et ne doit jamais être préfixée par `NEXT_PUBLIC_`. Le formulaire envoie par défaut à `contact@ymken.com` lorsque `CONTACT_TO_EMAIL` n’est pas défini, mais il reste recommandé de définir explicitement la variable sur Vercel.
+
 ## Production
 
 ```bash

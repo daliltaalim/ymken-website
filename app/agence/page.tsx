@@ -1,3 +1,32 @@
-import type { Metadata } from 'next'; import { Compass, Eye, Gem, HeartHandshake, Lightbulb, Scale } from 'lucide-react'; import { CTA, Eyebrow, PageHero } from '@/components/ui';
-export const metadata:Metadata={title:'L’Agence',description:'Découvrez YMKEN Solutions, agence de transformation digitale à Casablanca : notre vision, notre mission et notre approche.'};
-export default function Agence(){return <><PageHero label="L’Agence" title={<>La technologie prend du sens<br/>quand elle crée un <em>impact réel.</em></>} text="YMKEN est née d’une conviction simple : le digital doit rendre les entreprises plus fortes, les idées plus accessibles et les expériences plus humaines."/><section className="section"><div className="shell narrative"><Eyebrow dark>Notre histoire</Eyebrow><h2>« YMKEN » signifie <em>possible.</em></h2><div><p>À Casablanca, au croisement des ambitions locales et des opportunités internationales, nous avons imaginé une agence différente : exigeante sur la stratégie, précise dans l’exécution et profondément attentive aux réalités de chaque organisation.</p><p>Nous ne vendons pas la technologie pour la technologie. Nous cherchons le point où elle simplifie, accélère et ouvre un nouveau champ des possibles.</p></div></div></section><section className="manifest section"><div className="shell twocol"><article><Eye/><p>Notre vision</p><h2>Un digital plus utile, plus clair et plus humain.</h2><span>Faire de la transformation numérique un levier accessible et durable pour les organisations au Maroc et au-delà.</span></article><article><Compass/><p>Notre mission</p><h2>Transformer les ambitions en outils de croissance.</h2><span>Concevoir, développer et faire évoluer des solutions numériques alignées avec des objectifs métier concrets.</span></article></div></section><section className="section values"><div className="shell"><div className="sectionhead"><div><Eyebrow dark>Ce qui nous guide</Eyebrow><h2>Nos valeurs ne sont pas affichées.<br/><em>Elles sont appliquées.</em></h2></div></div><div className="valuegrid">{[[Lightbulb,'Curiosité','Questionner les évidences pour trouver une voie plus juste.'],[Gem,'Exigence','Soigner chaque décision, du premier échange au dernier détail.'],[HeartHandshake,'Proximité','Écouter vraiment, expliquer clairement et avancer ensemble.'],[Scale,'Responsabilité','Créer des solutions sobres, sûres et utiles sur le long terme.']].map(([I,t,d]:any)=><article key={t}><I/><h3>{t}</h3><p>{d}</p></article>)}</div></div></section><section className="founder section"><div className="shell foundergrid"><div className="foundermark">“</div><div><Eyebrow>Mot du fondateur</Eyebrow><blockquote>« YMKEN Solutions est née de l’envie d’utiliser la technologie pour résoudre de vrais problèmes — et créer un impact que l’on peut voir, comprendre et faire grandir. »</blockquote><p>Notre engagement est simple : aborder chaque projet avec écoute, honnêteté et ambition. Être plus qu’un prestataire, un partenaire qui comprend vos enjeux et assume la qualité de ce qu’il construit.</p><b>Tarik · Fondateur, YMKEN Solutions</b></div></div></section><CTA/></>}
+import type { Metadata } from 'next';
+import { Compass, Eye, Gem, HeartHandshake, Lightbulb, Scale } from 'lucide-react';
+import { CTA, Eyebrow, PageHero } from '@/components/ui';
+import { company } from '@/lib/config';
+
+export const metadata: Metadata = {
+  title: 'L’Agence',
+  description: 'Découvrez YMKEN Solutions, agence de transformation digitale à Casablanca : notre vision, notre mission et notre approche.',
+};
+
+const values = [
+  [Lightbulb, 'Curiosité', 'Questionner les évidences pour trouver une voie plus juste.'],
+  [Gem, 'Exigence', 'Soigner chaque décision, du premier échange au dernier détail.'],
+  [HeartHandshake, 'Proximité', 'Écouter vraiment, expliquer clairement et avancer ensemble.'],
+  [Scale, 'Responsabilité', 'Créer des solutions sobres, sûres et utiles sur le long terme.'],
+] as const;
+
+export default function Agence() {
+  return <>
+    <PageHero label="L’Agence" title={<>La technologie prend du sens<br />quand elle crée un <em>impact réel.</em></>} text="YMKEN est née d’une conviction simple : le digital doit rendre les entreprises plus fortes, les idées plus accessibles et les expériences plus humaines." />
+    <section className="section"><div className="shell narrative"><Eyebrow dark>Notre histoire</Eyebrow><h2>« YMKEN » signifie <em>possible.</em></h2><div><p>À Casablanca, au croisement des ambitions locales et des opportunités internationales, nous avons imaginé une agence différente : exigeante sur la stratégie, précise dans l’exécution et profondément attentive aux réalités de chaque organisation.</p><p>Nous ne vendons pas la technologie pour la technologie. Nous cherchons le point où elle simplifie, accélère et ouvre un nouveau champ des possibles.</p></div></div></section>
+    <section className="manifest section"><div className="shell twocol"><article><Eye /><p>Notre vision</p><h2>Un digital plus utile, plus clair et plus humain.</h2><span>Faire de la transformation numérique un levier accessible et durable pour les organisations au Maroc et au-delà.</span></article><article><Compass /><p>Notre mission</p><h2>Transformer les ambitions en outils de croissance.</h2><span>Concevoir, développer et faire évoluer des solutions numériques alignées avec des objectifs métier concrets.</span></article></div></section>
+    <section className="section values"><div className="shell"><div className="sectionhead"><div><Eyebrow dark>Ce qui nous guide</Eyebrow><h2>Nos valeurs ne sont pas affichées.<br /><em>Elles sont appliquées.</em></h2></div></div><div className="valuegrid">{values.map(([Icon, title, description]) => <article key={title}><Icon /><h3>{title}</h3><p>{description}</p></article>)}</div></div></section>
+    <section className="founder section">
+      <div className="shell foundergrid">
+        <div className="founderportrait" aria-label={`Signature éditoriale de ${company.founder}`}><div>NT</div><span>Vision · Impact · Confiance</span></div>
+        <div><Eyebrow>Mot du fondateur</Eyebrow><blockquote>« YMKEN Solutions est née de l’envie d’utiliser la technologie pour résoudre de vrais problèmes — et créer un impact que l’on peut voir, comprendre et faire grandir. »</blockquote><p>Notre engagement est simple : aborder chaque projet avec écoute, honnêteté et ambition. Être plus qu’un prestataire, un partenaire qui comprend vos enjeux et assume la qualité de ce qu’il construit.</p><div className="foundersignature"><strong>{company.founder}</strong><span>{company.founderRole}</span><span>{company.name}</span></div></div>
+      </div>
+    </section>
+    <CTA />
+  </>;
+}

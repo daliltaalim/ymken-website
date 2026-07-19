@@ -1,3 +1,49 @@
-import type { Metadata } from 'next'; import { CTA, Eyebrow, PageHero, ProjectGrid } from '@/components/ui';
-export const metadata:Metadata={title:'Réalisations',description:'Découvrez les projets digitaux réels conçus par YMKEN Solutions.'};
-export default function Realisations(){return <><PageHero label="Réalisations" title={<>Des solutions réelles.<br/>Un impact <em>qui se construit.</em></>} text="Nous présentons ici uniquement des produits conçus ou développés par YMKEN. Les résultats documentés seront publiés au fil de leur disponibilité."/><section className="portfoliointro section"><div className="shell"><div className="sectionhead"><div><Eyebrow dark>Portfolio</Eyebrow><h2>Nos projets,<br/><em>en toute transparence.</em></h2></div><p>Pas de logos empruntés, pas de résultats inventés. Seulement le travail réalisé et le contexte utile pour le comprendre.</p></div><ProjectGrid/></div></section><section className="section caseband"><div className="shell"><p>La suite s’écrit peut-être avec vous.</p><h2>Votre projet pourrait être<br/><em>notre prochaine collaboration.</em></h2></div></section><CTA/></>}
+import type { Metadata } from 'next';
+import { CTA, Eyebrow, PageHero, ProjectGrid } from '@/components/ui';
+import { PortfolioGrid } from '@/components/portfolio-grid';
+import { portfolioProjects } from '@/lib/data';
+
+export const metadata: Metadata = {
+  title: 'Réalisations',
+  description: 'Découvrez les sites, plateformes, interfaces et missions digitales réalisés par YMKEN Solutions.',
+};
+
+export default function Realisations() {
+  return (
+    <>
+      <PageHero
+        label="Réalisations"
+        title={<>Une histoire digitale.<br />Des projets <em>bien réels.</em></>}
+        text="Développement, plateformes, acquisition et communication : découvrez une sélection du patrimoine historique de YMKEN Solutions."
+      />
+      <section className="portfoliointro section">
+        <div className="shell">
+          <div className="sectionhead">
+            <div>
+              <Eyebrow dark>Réalisations & missions historiques</Eyebrow>
+              <h2>Notre savoir-faire,<br /><em>mis en pratique.</em></h2>
+            </div>
+            <p>Une sélection issue de la présentation officielle de l’agence. Nous décrivons les interventions documentées, sans résultats ni technologies supposés.</p>
+          </div>
+          <div className="portfoliolegend" aria-label="Catégories représentées">
+            <span>Développement Web</span><span>Applications & Plateformes</span><span>Marketing Digital</span><span>Communication & Design</span>
+          </div>
+          <PortfolioGrid projects={portfolioProjects} />
+        </div>
+      </section>
+      <section className="innovation section">
+        <div className="shell">
+          <div className="sectionhead">
+            <div>
+              <Eyebrow dark>Produits & innovations YMKEN</Eyebrow>
+              <h2>Des idées portées<br /><em>de l’intérieur.</em></h2>
+            </div>
+            <p>Des produits numériques développés ou portés par YMKEN, distincts des missions réalisées pour nos clients.</p>
+          </div>
+          <ProjectGrid />
+        </div>
+      </section>
+      <CTA />
+    </>
+  );
+}
