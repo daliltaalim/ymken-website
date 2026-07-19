@@ -1,0 +1,1 @@
+import type { MetadataRoute } from 'next'; export default function sitemap():MetadataRoute.Sitemap{return ['','/agence','/services','/realisations','/contact'].map((p)=>({url:`https://ymken.com${p}`,lastModified:new Date(),changeFrequency:p?'monthly':'weekly',priority:p?0.8:1}))}
