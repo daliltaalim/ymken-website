@@ -61,12 +61,18 @@
             </dl>
           </div>
           <div class="hero-visual" aria-label="Aperçu portfolio YMKEN">
+            <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+            <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
             <div class="hero-card hero-card-main">
-              <img src="assets/portfolio-coozzy.svg" alt="Interface responsive du portail immobilier Coozzy" />
+              <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><i>ymken.digital / produit</i></div>
+              <img src="assets/portfolio-coozzy.svg" alt="Interface responsive du portail immobilier Coozzy" width="1200" height="780" fetchpriority="high" decoding="async" />
             </div>
             <div class="hero-card hero-card-small">
-              <img src="assets/portfolio-good-talents.svg" alt="Interface d’administration Good Talents" />
+              <div class="browser-bar browser-bar-compact" aria-hidden="true"><span></span><span></span><span></span></div>
+              <img src="assets/portfolio-good-talents.svg" alt="Interface d’administration Good Talents" width="1200" height="780" decoding="async" />
             </div>
+            <div class="tech-pill tech-pill-ai" aria-hidden="true"><b>AI</b><span>Intelligence<br />augmentée</span></div>
+            <div class="tech-pill tech-pill-data" aria-hidden="true"><i></i><span>Data flow</span></div>
             <div class="floating-note">
               <strong>Du besoin métier</strong>
               <span>à une expérience numérique prête à scaler.</span>
@@ -108,27 +114,27 @@
         </div>
         <div class="container service-grid">
           <article class="service-card">
-            <span class="service-icon">↗</span>
+            <span class="service-icon service-icon-web" aria-hidden="true">↗</span>
             <h3>Développement web & mobile</h3>
             <p>Sites corporate, plateformes SaaS, applications mobiles et interfaces d’administration robustes, rapides et évolutives.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon">AI</span>
+            <span class="service-icon service-icon-ai" aria-hidden="true">AI</span>
             <h3>Intelligence artificielle</h3>
             <p>Automatisation, assistants IA, qualification de leads, analyse de données et intégrations intelligentes adaptées au métier.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon">◎</span>
+            <span class="service-icon service-icon-marketing" aria-hidden="true">◎</span>
             <h3>Marketing digital</h3>
             <p>SEO, campagnes social ads, génération de leads, tracking et optimisation continue des performances commerciales.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon">◆</span>
+            <span class="service-icon service-icon-brand" aria-hidden="true">◆</span>
             <h3>Branding</h3>
             <p>Identités visuelles, directions artistiques, supports de communication et systèmes graphiques cohérents.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon">A11Y</span>
+            <span class="service-icon service-icon-access" aria-hidden="true">A11Y</span>
             <h3>Accessibilité numérique</h3>
             <p>Audits, design inclusif, contrastes, navigation clavier, contenus structurés et bonnes pratiques WCAG.</p>
           </article>
@@ -138,7 +144,11 @@
       <section id="apropos" class="about section-pad" aria-labelledby="about-title">
         <div class="container about-grid">
           <div class="about-media">
-            <img src="assets/team-consulting.svg" alt="Équipe YMKEN Solutions en atelier de conseil avec un client" />
+            <div class="about-image-frame">
+              <span class="image-label" aria-hidden="true"><i></i> Conseil & innovation</span>
+              <img src="assets/team-consulting.svg" alt="Équipe YMKEN Solutions en atelier de conseil avec un client" width="900" height="720" loading="lazy" decoding="async" />
+              <div class="about-image-caption" aria-hidden="true"><strong>Vision 360°</strong><span>Stratégie · Design · Technologie</span></div>
+            </div>
           </div>
           <div class="about-copy">
             <p class="eyebrow">À propos</p>
