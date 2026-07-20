@@ -84,6 +84,29 @@ h3 { font-size: 1.32rem; letter-spacing: -0.025em; }
 .work-content { padding: 28px; }
 .work-kicker { color: var(--blue); font-size: 0.78rem; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 900; margin-top: 0; }
 .work-content p:last-child { color: var(--gray-600); margin-bottom: 0; }
+.text-link { display: inline-flex; gap: 8px; align-items: center; margin-top: 20px; color: var(--navy); font-weight: 900; }
+.text-link:hover, .text-link:focus-visible { color: var(--blue); }
+
+.page-hero { padding: 86px 0 64px; background: linear-gradient(135deg, #f9fbfd, #e8f7fd); }
+.page-hero h1 { max-width: 980px; }
+.page-hero p:last-child { max-width: 720px; color: var(--gray-600); font-size: 1.16rem; }
+.realisation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.realisation-card { overflow: hidden; border: 1px solid var(--gray-100); border-radius: 30px; background: var(--white); box-shadow: 0 18px 55px rgba(7, 27, 51, 0.08); }
+.realisation-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--gray-50); }
+.realisation-card .work-content { height: 100%; }
+.project-innovations { background: var(--navy); }
+.project-innovations h2, .project-innovations h3 { color: var(--white); }
+.project-innovations .section-heading p:last-child, .project-innovations .innovation-card p { color: #c9d7e8; }
+.innovation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.innovation-card { padding: 32px; border: 1px solid rgba(255,255,255,.14); border-radius: 28px; background: rgba(255,255,255,.06); }
+.president { background: var(--navy); color: var(--white); }
+.president-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 64px; align-items: center; }
+.president-photo { overflow: hidden; border-radius: 32px; background: var(--navy-2); box-shadow: var(--shadow); }
+.president-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
+.president h2 { color: var(--white); }
+.president blockquote { margin: 28px 0; color: #e5edf6; font-size: 1.22rem; }
+.president-name { margin-bottom: 0; font-weight: 900; }
+.president-role { margin-top: 2px; color: #c9d7e8; white-space: pre-line; }
 
 .about { background: linear-gradient(180deg, var(--gray-50), var(--white)); }
 .about-grid, .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -115,11 +138,11 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(8,165,223,0.
   .menu-toggle { display: inline-block; }
   .nav-links { position: absolute; top: 82px; left: 20px; right: 20px; display: none; flex-direction: column; align-items: stretch; padding: 20px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 24px; box-shadow: var(--shadow); }
   .nav-links.is-open { display: flex; }
-  .hero-grid, .story-grid, .section-heading, .portfolio-heading, .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+  .hero-grid, .story-grid, .section-heading, .portfolio-heading, .about-grid, .contact-grid, .footer-grid, .president-grid { grid-template-columns: 1fr; }
   .hero-grid { min-height: auto; }
   .hero-visual { min-height: 520px; }
   .service-grid { grid-template-columns: repeat(2, 1fr); }
-  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-grid, .realisation-grid { grid-template-columns: 1fr; }
   .work-large { grid-row: auto; }
   .work-large img { aspect-ratio: 16 / 10; }
   .footer-grid ul { justify-content: flex-start; }
@@ -129,7 +152,7 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(8,165,223,0.
   .container { width: min(100% - 28px, 1140px); }
   .section-pad { padding: 70px 0; }
   h1 { font-size: clamp(2.65rem, 15vw, 4.5rem); }
-  .trust-metrics, .service-grid, .logo-cloud { grid-template-columns: 1fr; }
+  .trust-metrics, .service-grid, .logo-cloud, .innovation-grid { grid-template-columns: 1fr; }
   .hero-actions .btn { width: 100%; }
   .hero-visual { min-height: 410px; }
   .hero-card-main { left: 0; }

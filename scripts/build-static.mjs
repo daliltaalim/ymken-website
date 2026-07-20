@@ -10,6 +10,8 @@ const entries = [
   ['script.js', 'script.js'],
   ['styles.css', 'styles.css'],
   ['assets', 'assets'],
+  ['realisations', 'realisations'],
+  ['agence', 'agence'],
 ];
 
 await rm(publicDir, { recursive: true, force: true });
