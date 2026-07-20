@@ -2,6 +2,16 @@ const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const contactForm = document.querySelector('[data-contact-form]');
 const contactStatus = document.querySelector('[data-contact-status]');
+const whatsappNumber = '212663357039';
+const whatsappMessage = 'Bonjour YMKEN Solutions, je souhaite discuter de mon projet.';
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+let isSubmitting = false;
+
+document.querySelectorAll('[data-whatsapp-link]').forEach((link) => {
+  if (link instanceof HTMLAnchorElement) {
+    link.href = whatsappUrl;
+  }
+});
 
 menuToggle?.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('is-open');
@@ -18,9 +28,14 @@ navLinks?.addEventListener('click', (event) => {
 contactForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  if (isSubmitting) {
+    return;
+  }
+
   const submitButton = contactForm.querySelector('button[type="submit"]');
   const formData = new FormData(contactForm);
 
+  isSubmitting = true;
   setContactStatus('Envoi en cours...', false);
   submitButton?.setAttribute('disabled', 'disabled');
 
@@ -38,15 +53,18 @@ contactForm?.addEventListener('submit', async (event) => {
       }),
     });
 
+    const result = await response.json().catch(() => null);
+
     if (!response.ok) {
-      throw new Error('Contact request failed');
+      throw new Error(result?.error || 'Contact request failed');
     }
 
     contactForm.reset();
     setContactStatus('Merci, votre demande a bien été envoyée. Nous reviendrons vers vous rapidement.');
   } catch (error) {
-    setContactStatus('Une erreur est survenue. Veuillez réessayer.');
+    setContactStatus(error instanceof Error ? error.message : 'Une erreur est survenue. Veuillez réessayer.');
   } finally {
+    isSubmitting = false;
     submitButton?.removeAttribute('disabled');
   }
 });

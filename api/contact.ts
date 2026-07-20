@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 type VercelRequest = {
   method?: string;
   body?: Record<string, unknown>;
@@ -9,6 +11,14 @@ type VercelResponse = {
 };
 
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
+const contactSchema = z.object({
+  name: z.string().trim().min(2).max(100),
+  email: z.string().trim().email().max(254),
+  service: z.string().trim().min(1).max(100),
+  message: z.string().trim().min(10).max(5000),
+  phone: z.string().trim().max(30).optional(),
+  company: z.string().trim().max(150).optional(),
+});
 
 export default async function handler(request: VercelRequest, response: VercelResponse) {
   if (request.method !== 'POST') {
@@ -18,35 +28,45 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
   try {
     const brevoApiKey = process.env.BREVO_API_KEY;
-    const contactToEmail = process.env.CONTACT_TO_EMAIL;
-    const contactFromEmail = process.env.CONTACT_FROM_EMAIL;
+    const senderEmail =
+      process.env.BREVO_SENDER_EMAIL ||
+      process.env.CONTACT_FROM_EMAIL;
+    const recipientEmail = process.env.CONTACT_TO_EMAIL;
 
     if (!brevoApiKey) {
       return sendErrorResponse(response, 500, 'Missing BREVO_API_KEY');
     }
 
-    if (!contactToEmail) {
+    if (!recipientEmail) {
       return sendErrorResponse(response, 500, 'Missing CONTACT_TO_EMAIL');
     }
 
-    if (!contactFromEmail) {
-      return sendErrorResponse(response, 500, 'Missing CONTACT_FROM_EMAIL');
+    if (!senderEmail) {
+      return sendErrorResponse(response, 500, 'Missing BREVO_SENDER_EMAIL or CONTACT_FROM_EMAIL');
     }
 
     const body = request.body ?? {};
-    const name = body.name ?? body.fullName;
-    const { email, service, message, phone, company } = body;
+    const validation = contactSchema.safeParse({
+      ...body,
+      name: body.name ?? body.fullName,
+    });
 
-    const missingField = getMissingRequiredField({ name, email, service, message });
-
-    if (missingField) {
-      return response.status(400).json({ success: false, error: `Missing ${missingField}` });
+    if (!validation.success) {
+      return response.status(400).json({
+        success: false,
+        error: 'Veuillez vérifier les informations du formulaire.',
+        fields: validation.error.flatten().fieldErrors,
+      });
     }
 
-    const contactName = String(name).trim();
-    const contactEmail = String(email).trim();
-    const requestedService = String(service).trim();
-    const contactMessage = String(message).trim();
+    const {
+      name: contactName,
+      email: contactEmail,
+      service: requestedService,
+      message: contactMessage,
+      phone,
+      company,
+    } = validation.data;
 
     const htmlContent = `
       <h1>Nouvelle demande de contact</h1>
@@ -68,10 +88,10 @@ export default async function handler(request: VercelRequest, response: VercelRe
       },
       body: JSON.stringify({
         sender: {
-          email: contactFromEmail,
+          email: senderEmail,
           name: 'YMKEN Solutions',
         },
-        to: [{ email: contactToEmail }],
+        to: [{ email: recipientEmail }],
         replyTo: {
           email: contactEmail,
           name: contactName,
@@ -86,16 +106,14 @@ export default async function handler(request: VercelRequest, response: VercelRe
       console.error('Contact API error:', new Error(`Brevo request failed with status ${brevoResponse.status}: ${brevoError}`));
       return response.status(502).json({
         success: false,
-        error: 'Brevo request failed',
-        status: brevoResponse.status,
-        details: brevoError,
+        error: 'Le message n’a pas pu être envoyé. Veuillez réessayer.',
       });
     }
 
     return response.status(200).json({ success: true });
   } catch (error) {
     console.error('Contact API error:', error);
-    return response.status(500).json({ success: false, error: getErrorMessage(error) });
+    return response.status(500).json({ success: false, error: 'Une erreur est survenue. Veuillez réessayer.' });
   }
 }
 
@@ -105,30 +123,12 @@ function sendErrorResponse(response: VercelResponse, statusCode: number, message
   return response.status(statusCode).json({ success: false, error: message });
 }
 
-function getMissingRequiredField(fields: Record<string, unknown>) {
-  for (const [field, value] of Object.entries(fields)) {
-    if (typeof value !== 'string' || value.trim() === '') {
-      return field;
-    }
-  }
-
-  return null;
-}
-
 function formatOptionalField(label: string, value: unknown) {
   if (typeof value !== 'string' || value.trim() === '') {
     return '';
   }
 
   return `<p><strong>${label} :</strong> ${escapeHtml(value)}</p>`;
-}
-
-function getErrorMessage(error: unknown) {
-  if (error instanceof Error && error.message) {
-    return error.message;
-  }
-
-  return 'Unexpected contact API error';
 }
 
 function escapeHtml(value: unknown) {
