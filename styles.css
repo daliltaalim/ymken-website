@@ -109,6 +109,13 @@ h3 { font-size: 1.32rem; line-height: 1.2; letter-spacing: -0.02em; }
 
 .contact { background: var(--gray-50); }
 .contact p { color: var(--gray-600); }
+.contact-socials { margin-top: 28px; }
+.contact-socials > p { margin: 0 0 10px; color: var(--navy); font-size: 0.88rem; font-weight: 750; letter-spacing: 0.01em; }
+.social-links { display: flex; align-items: center; gap: 10px; }
+.social-links a { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; color: var(--navy); background: var(--white); border: 1px solid var(--gray-300); border-radius: 50%; transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease; }
+.social-links svg { width: 19px; height: 19px; fill: currentColor; }
+.social-links a:hover, .social-links a:focus-visible { color: var(--white); background: var(--navy); border-color: var(--navy); transform: translateY(-2px); }
+.social-links a:focus-visible { outline: 3px solid rgba(8,165,223,0.35); outline-offset: 3px; }
 .contact-form { display: grid; gap: 16px; padding: 30px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 32px; box-shadow: var(--shadow); }
 label { display: grid; gap: 8px; color: var(--navy); font-weight: 850; }
 input, select, textarea { width: 100%; padding: 15px 16px; border: 1px solid var(--gray-300); border-radius: 16px; font: inherit; color: var(--navy); background: var(--white); }
@@ -118,6 +125,9 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(8,165,223,0.
 .footer-grid { display: grid; grid-template-columns: 0.8fr 1.2fr 0.7fr; gap: 24px; align-items: center; }
 .footer-grid ul { display: flex; gap: 18px; justify-content: flex-end; list-style: none; padding: 0; margin: 0; }
 .footer-grid a:hover { color: var(--white); }
+.footer-actions { display: grid; justify-items: end; gap: 16px; }
+.footer-socials a { color: #c9d7e8; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.2); }
+.footer-socials a:hover, .footer-socials a:focus-visible { color: var(--navy); background: var(--blue); border-color: var(--blue); }
 .whatsapp-float { position: fixed; right: 22px; bottom: 22px; z-index: 9; padding: 13px 18px; border-radius: 999px; background: #25d366; color: #071b33; font-weight: 900; box-shadow: 0 12px 30px rgba(7, 27, 51, 0.24); }
 .whatsapp-float:hover, .whatsapp-float:focus-visible { background: #20bd5a; }
 
@@ -137,6 +147,7 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(8,165,223,0.
   .work-large { grid-row: auto; }
   .work-large img { aspect-ratio: 16 / 10; }
   .footer-grid ul { justify-content: flex-start; }
+  .footer-actions { justify-items: start; }
 }
 
 @media (max-width: 640px) {
