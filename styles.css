@@ -86,10 +86,19 @@ h3 { font-size: 1.32rem; letter-spacing: -0.025em; }
 .about { background: linear-gradient(180deg, var(--gray-50), var(--white)); }
 .about-grid, .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .about-media { overflow: hidden; border-radius: 34px; box-shadow: var(--shadow); background: var(--white); }
+.about-image { width: 100%; height: 560px; object-fit: cover; object-position: center; }
 .about-copy p { color: var(--gray-600); }
 .check-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
 .check-list li { position: relative; padding-left: 32px; font-weight: 750; }
 .check-list li::before { content: ""; position: absolute; left: 0; top: 0.35em; width: 18px; height: 18px; border-radius: 50%; background: var(--blue); box-shadow: inset 0 0 0 5px var(--blue-soft); }
+
+.founder { background: var(--white); }
+.founder-grid { display: grid; grid-template-columns: minmax(320px, 380px) minmax(0, 1fr); gap: 72px; align-items: center; }
+.founder-media { width: 100%; max-width: 380px; justify-self: center; overflow: hidden; border-radius: 30px; box-shadow: 0 20px 55px rgba(7, 27, 51, 0.14); }
+.founder-media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
+.founder-message { color: var(--gray-600); font-size: 1.14rem; }
+.founder-name { margin: 28px 0 0; color: var(--navy); font-weight: 900; }
+.founder-role { margin: 0; color: var(--gray-600); }
 
 .clients { background: var(--navy); }
 .clients h2 { color: var(--white); }
@@ -122,6 +131,9 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(8,165,223,0.
   .portfolio-grid { grid-template-columns: 1fr; }
   .work-large { grid-row: auto; }
   .work-large img { aspect-ratio: 16 / 10; }
+  .about-image { height: clamp(360px, 58vw, 520px); }
+  .founder-grid { grid-template-columns: minmax(280px, 340px) minmax(0, 1fr); gap: 48px; }
+  .founder-media { max-width: 340px; }
   .footer-grid ul { justify-content: flex-start; }
 }
 
@@ -134,5 +146,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(8,165,223,0.
   .hero-visual { min-height: 410px; }
   .hero-premium-image { border-radius: 26px; }
   .floating-note { max-width: 230px; font-size: 0.9rem; }
+  .about-image { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+  .founder-grid { grid-template-columns: 1fr; gap: 36px; }
+  .founder-media { width: min(100%, 260px); max-width: 260px; border-radius: 24px; }
   .contact-form { padding: 20px; }
 }
