@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build-static.mjs",
+    "verify:images": "node scripts/verify-static-images.mjs",
+    "test": "npm run typecheck && npm run lint && npm run verify:images",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },
